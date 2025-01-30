@@ -1,0 +1,31 @@
+def extract_spaces(sentences):
+    spaces_list = []
+    temp = ""
+    for char in sentences:
+        if char == " ":
+            temp += char  # Add space to temporary storage
+        else:
+            if temp:  
+                spaces_list.append(temp)  # Store collected spaces in list
+                temp = ""  # Reset temp storage
+    if temp:
+        spaces_list.append(temp)
+    return (spaces_list) 
+
+def is_Palindrome(sentences):
+    return sentences == sentences[::-1]
+
+def find_palindromic_words(sentences):
+    words = list(sentences)
+    palindromic_words = [word for word in words if is_Palindrome(word)]  
+    return palindromic_words 
+
+def main():
+    sentences = input("Enter your sentence: ") 
+    sentence_palindrome_result = "Palindrome!!" if is_Palindrome(sentences) else "Not Palindrome"
+    spaces_list = extract_spaces(sentences)
+    palindromic_words = find_palindromic_words(sentences)
+    print("Is the full sentence a palindrome?", sentence_palindrome_result)  
+    print("Spaces in the string:", spaces_list)
+    print("Palindromic words in the sentence:", palindromic_words)
+main()
